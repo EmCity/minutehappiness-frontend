@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net47</TargetFramework>
+    <RuntimeIdentifier>win7-x86</RuntimeIdentifier>
+    <AssemblyName>MinuteOfHappiness.Frontend.Data</AssemblyName>
+    <RootNamespace>MinuteOfHappiness.Frontend.Data</RootNamespace>
+  </PropertyGroup>
+
+</Project>
