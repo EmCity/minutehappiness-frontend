@@ -1,3 +1,23 @@
 body {
    background:black !important;
 }
+
+.navbar-collapse.collapse {
+    display: block !important;
+}
+
+.navbar-nav > li, .navbar-nav, .navbar-header {
+    float: left !important;
+}
+
+    .navbar-nav.navbar-right:last-child {
+        margin-right: -15px !important;
+    }
+
+.navbar-right {
+    float: right !important;
+}
+
+.negativ-margin {
+    margin-top: -0px;
+}

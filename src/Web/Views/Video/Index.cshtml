@@ -30,15 +30,9 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="#">One Minute of Happiness</a>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse">
+                <div id="navbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="#menu-toggle" id="menu-toggle">
@@ -85,18 +79,11 @@
                 </ul>
             </div>
 
-            <div id="page-content-wrapper">
+            <div class="embed-responsive embed-responsive-16by9 negativ-margin" id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
                         <!-- 16:9 aspect ratio -->
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item video-frame 16by9" :src="videoUrl"></iframe>
-                        </div>
-
-                        <!-- 4:3 aspect ratio -->
-                        <!--<div class="embed-responsive embed-responsive-4by3">
-                            <iframe class="embed-responsive-item video-frame 4by3" :src="videoUrl"></iframe>
-                        </div>-->
+                        <iframe id="youtube-video" class="embed-responsive-item" :src="videoUrl"></iframe>
                     </div>
                 </div>
             </div>
@@ -114,6 +101,7 @@
         <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.js?v=@assetVersion"></script>
         <script type="text/javascript" src="~/lib/vue/vue.js?v=@assetVersion"></script>
         <script type="text/javascript" src="~/lib/vue-resource/vue-resource.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/youtube/iframe-api.js?v=@assetVersion"></script>
         <script type="text/javascript" src="~/js/main.js?v=@assetVersion"></script>
     </environment>
     <environment names="Staging,Production">
@@ -121,6 +109,7 @@
         <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js?v=@assetVersion"></script>
         <script type="text/javascript" src="~/lib/vue/vue.min.js?v=@assetVersion"></script>
         <script type="text/javascript" src="~/lib/vue-resource/vue-resource.min.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/youtube/iframe-api.js?v=@assetVersion"></script>
         <script type="text/javascript" src="~/js/video.min.js?v=@assetVersion"></script>
     </environment>
 </body>

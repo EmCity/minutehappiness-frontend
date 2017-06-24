@@ -19,10 +19,12 @@ namespace MinuteOfHappiness.Frontend.Web.Mapping
                 .ForMember(dest => dest.Url, opt => opt.ResolveUsing((src, dest, mem, res) =>
                 {
                     var youTubeUrlFormat = res.Items["YouTubeUrlFormat"] as string;
+                    var origin = res.Items["Origin"] as string;
 
                     return youTubeUrlFormat?.Replace("{videoId}", src.YouTubeId)
                         .Replace("{startSeconds}", src.StartSeconds.ToString())
-                        .Replace("{endSeconds}", src.EndSeconds.ToString());
+                        .Replace("{endSeconds}", src.EndSeconds.ToString())
+                        .Replace("{origin}", origin ?? "_");
                 }));
 
             #endregion

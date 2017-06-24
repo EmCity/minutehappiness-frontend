@@ -61,7 +61,11 @@ namespace MinuteOfHappiness.Frontend.Web.Controllers
 
             // Map the entity to the model
             var model = Mapper.Map<IEnumerable<Data.Entities.Video>, IEnumerable<VideoFragmentModel>>(videoFragmentList,
-                opt => opt.Items["YouTubeUrlFormat"] = VideoUrlConfiguration.YouTube);
+                opt =>
+                {
+                    opt.Items["YouTubeUrlFormat"] = VideoUrlConfiguration.YouTube;
+                    opt.Items["Origin"] = $"{Request.Scheme}://{Request.Host.ToString()}";
+                });
 
             return Json(model.Select(x => x.Url));
         }
