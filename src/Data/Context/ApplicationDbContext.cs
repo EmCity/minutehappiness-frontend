@@ -6,7 +6,7 @@ namespace MinuteOfHappiness.Frontend.Data.Context
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(string connectionString)
+        public ApplicationDbContext(string connectionString) : base(connectionString)
         {
         }
 

@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{743B5A49-ED1E-4A72-A1F7-08C9B7A728B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "src\Web\Web.csproj", "{5896EC5C-DBF4-480E-93B1-4501972B895D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "src\Web\Web.csproj", "{5896EC5C-DBF4-480E-93B1-4501972B895D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\Data\Data.csproj", "{9DEE50ED-04A8-44C0-B0B4-2A6D063015F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\Data\Data.csproj", "{1FB9DB29-E0AC-4AAE-BFFD-FE9D3DA8F8F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +19,16 @@ Global
 		{5896EC5C-DBF4-480E-93B1-4501972B895D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5896EC5C-DBF4-480E-93B1-4501972B895D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5896EC5C-DBF4-480E-93B1-4501972B895D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DEE50ED-04A8-44C0-B0B4-2A6D063015F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DEE50ED-04A8-44C0-B0B4-2A6D063015F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DEE50ED-04A8-44C0-B0B4-2A6D063015F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DEE50ED-04A8-44C0-B0B4-2A6D063015F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FB9DB29-E0AC-4AAE-BFFD-FE9D3DA8F8F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB9DB29-E0AC-4AAE-BFFD-FE9D3DA8F8F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB9DB29-E0AC-4AAE-BFFD-FE9D3DA8F8F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FB9DB29-E0AC-4AAE-BFFD-FE9D3DA8F8F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5896EC5C-DBF4-480E-93B1-4501972B895D} = {743B5A49-ED1E-4A72-A1F7-08C9B7A728B2}
-		{9DEE50ED-04A8-44C0-B0B4-2A6D063015F5} = {743B5A49-ED1E-4A72-A1F7-08C9B7A728B2}
+		{1FB9DB29-E0AC-4AAE-BFFD-FE9D3DA8F8F8} = {743B5A49-ED1E-4A72-A1F7-08C9B7A728B2}
 	EndGlobalSection
 EndGlobal
