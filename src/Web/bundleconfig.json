@@ -1,0 +1,15 @@
+[
+  {
+    "outputFileName": "wwwroot/css/video.min.css",
+    "inputFiles": [
+      "wwwroot/css/simple-sidebar.css",
+      "wwwroot/css/custom.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/video.min.js",
+    "inputFiles": [
+      "wwwroot/js/main.js"
+    ]
+  }
+]

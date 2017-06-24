@@ -6,7 +6,7 @@ namespace MinuteOfHappiness.Frontend.Data.Entities
     public class Video
     {
         public int Id { get; set; }
-        public string Url { get; set; }
+        public string YouTubeId { get; set; }
         public int StartSeconds { get; set; }
         public int EndSeconds { get; set; }
 

@@ -21,7 +21,7 @@ namespace MinuteOfHappiness.Frontend.Data.Context
             videoConfig.ToTable("VideoFragments");
             videoConfig.HasKey(model => model.Id);
             videoConfig.Property(model => model.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            videoConfig.Property(model => model.Url).IsRequired().HasMaxLength(500);
+            videoConfig.Property(model => model.YouTubeId).IsRequired().HasMaxLength(500);
             videoConfig.Property(model => model.StartSeconds).IsRequired();
             videoConfig.Property(model => model.EndSeconds).IsRequired();
             videoConfig.Ignore(model => model.StartTime);

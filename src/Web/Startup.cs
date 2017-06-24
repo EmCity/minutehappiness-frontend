@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MinuteOfHappiness.Frontend.Data.Context;
+using MinuteOfHappiness.Frontend.Web.Helpers;
 using Serilog;
 
 namespace MinuteOfHappiness.Frontend.Web
@@ -40,6 +41,12 @@ namespace MinuteOfHappiness.Frontend.Web
             // Add AutoMapper
             services.AddAutoMapper();
 
+            // Add functionality to inject IOptions<T>
+            services.AddOptions();
+
+            // Cast the relevant configuration to a predefined options object
+            services.Configure<VideoUrlConfiguration>(Configuration.GetSection("VideoUrlFormat"));
+
             // Add customer services
             services.AddScoped<ApplicationDbContext>(factory => 
                 new ApplicationDbContext(Configuration.GetConnectionString("DefaultConnection")));
@@ -52,6 +59,8 @@ namespace MinuteOfHappiness.Frontend.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles();
 
             app.UseMvc();
         }

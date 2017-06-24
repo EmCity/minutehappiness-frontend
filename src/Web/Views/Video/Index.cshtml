@@ -1,4 +1,127 @@
 ﻿@using MinuteOfHappiness.Frontend.Web
 @using MinuteOfHappiness.Frontend.Web.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model IEnumerable<VideoFragmentModel>
+
+@{
+    var assetVersion = 0;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>One Minute of Happiness</title>
+
+    <environment names="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css?v=@assetVersion" rel="stylesheet" />
+        <link href="~/css/simple-sidebar.css?v=@assetVersion" rel="stylesheet" />
+        <link href="~/css/custom.css?v=@assetVersion" rel="stylesheet" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/bootstrap/css/bootstrap.min.css?v=@assetVersion" rel="stylesheet" />
+        <link href="~/css/video.min.css?v=@assetVersion" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <div id="main" v-cloak>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">One Minute of Happiness</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#menu-toggle" id="menu-toggle">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            Start Bootstrap
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Shortcuts</a>
+                    </li>
+                    <li>
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item video-frame 16by9" :src="videoUrl"></iframe>
+                        </div>
+
+                        <!-- 4:3 aspect ratio -->
+                        <!--<div class="embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item video-frame 4by3" :src="videoUrl"></iframe>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var urls = {
+            getNewVideo: '@Url.Action("FetchNewYouTubeVideoSeries", "Video")'
+        }
+    </script>
+
+    <environment names="Development">
+        <script type="text/javascript" src="~/lib/jquery/jquery-3.2.1.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/vue/vue.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/vue-resource/vue-resource.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/js/main.js?v=@assetVersion"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script type="text/javascript" src="~/lib/jquery/jquery-3.2.1.min.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/vue/vue.min.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/vue-resource/vue-resource.min.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/js/video.min.js?v=@assetVersion"></script>
+    </environment>
+</body>
+</html>
