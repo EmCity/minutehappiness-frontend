@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +37,10 @@ namespace MinuteOfHappiness.Frontend.Web
             // Add framework services
             services.AddMvc();
 
+            // Add AutoMapper
+            services.AddAutoMapper();
+
+            // Add customer services
             services.AddScoped<ApplicationDbContext>(factory => 
                 new ApplicationDbContext(Configuration.GetConnectionString("DefaultConnection")));
         }

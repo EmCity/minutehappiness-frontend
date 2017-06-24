@@ -29,10 +29,19 @@ namespace MinuteOfHappiness.Frontend.Data.Migrations
             //
 
             context.Videos.AddOrUpdate(
-                model => model.Id,
-                new Video { Id = 1, Url = "https://www.youtube.com/watch?v=hCnO7OkbQ10", StartSeconds = 10, EndSeconds = 25 },
-                new Video { Id = 2, Url = "https://www.youtube.com/watch?v=rJjHhjCUXI0", StartSeconds = 15, EndSeconds = 35 },
-                new Video { Id = 3, Url = "https://www.youtube.com/watch?v=TRA_TJ1a5M0", StartSeconds = 20, EndSeconds = 45 });
+                model => model.Url,
+                new Video {  Url = "https://www.youtube.com/watch?v=hCnO7OkbQ10", StartSeconds = 10, EndSeconds = 25 },
+                new Video {  Url = "https://www.youtube.com/watch?v=rJjHhjCUXI0", StartSeconds = 15, EndSeconds = 35 },
+                new Video {  Url = "https://www.youtube.com/watch?v=TRA_TJ1a5M0", StartSeconds = 20, EndSeconds = 45 },
+                new Video {  Url = "https://www.youtube.com/watch?v=LVKJfLbz5yQ", StartSeconds = 10, EndSeconds = 25 },
+                new Video {  Url = "https://www.youtube.com/watch?v=LP_1VAcXoBM", StartSeconds = 15, EndSeconds = 35 },
+                new Video {  Url = "https://www.youtube.com/watch?v=_NmDq_ZbrC0", StartSeconds = 20, EndSeconds = 45 },
+                new Video {  Url = "https://www.youtube.com/watch?v=y6Sxv-sUYtM", StartSeconds = 10, EndSeconds = 25 },
+                new Video {  Url = "https://www.youtube.com/watch?v=JRMOMjCoR58", StartSeconds = 15, EndSeconds = 35 },
+                new Video {  Url = "https://www.youtube.com/watch?v=MOWDb2TBYDg", StartSeconds = 20, EndSeconds = 45 },
+                new Video {  Url = "https://www.youtube.com/watch?v=qQkBeOisNM0", StartSeconds = 10, EndSeconds = 25 },
+                new Video {  Url = "https://www.youtube.com/watch?v=jKbR7u8J5PU", StartSeconds = 15, EndSeconds = 35 },
+                new Video {  Url = "https://www.youtube.com/watch?v=Sv6dMFF_yts", StartSeconds = 20, EndSeconds = 45 });
         }
     }
 }
