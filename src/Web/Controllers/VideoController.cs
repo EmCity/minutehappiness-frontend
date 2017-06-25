@@ -16,16 +16,16 @@ namespace MinuteOfHappiness.Frontend.Web.Controllers
         public VideoController(
             ApplicationDbContext applicationDbContext, 
             IMapper mapper, 
-            IOptions<VideoUrlConfiguration> videoUrlConfig)
+            IOptions<VideoConfiguration> videoUrlConfig)
         {
             DbContext = applicationDbContext;
             Mapper = mapper;
-            VideoUrlConfiguration = videoUrlConfig.Value;
+            VideoConfiguration = videoUrlConfig.Value;
         }
 
         private ApplicationDbContext DbContext { get; }
         private IMapper Mapper { get; }
-        private VideoUrlConfiguration VideoUrlConfiguration { get; }
+        private VideoConfiguration VideoConfiguration { get; }
 
         [HttpGet]
         public IActionResult Index()
@@ -33,11 +33,41 @@ namespace MinuteOfHappiness.Frontend.Web.Controllers
             return View();
         }
 
-        [HttpPost("video/new")]
-        public IActionResult FetchNewYouTubeVideoSeries()
+        [HttpPost("video/new/params")]
+        public IActionResult GetNewYouTubeVideoParams()
+        {
+            var videoFragments = FetchNewYouTubeVideoSeries();
+
+            // Map the entity to the model
+            var model = new YouTubeVideoFragmentParamsModel()
+            {
+                Videos = Mapper.Map<IEnumerable<Data.Entities.Video>, IEnumerable<VideoFragmentParamsModel>>(videoFragments),
+                YouTubeParams = VideoConfiguration.ParamsConfig.YouTube
+            };
+
+            return Json(model);
+        }
+
+        [HttpPost("video/new/url")]
+        public IActionResult GetNewYouTubeVideoUrls()
+        {
+            var videoFragments = FetchNewYouTubeVideoSeries();
+
+            // Map the entity to the model
+            var model = Mapper.Map<IEnumerable<Data.Entities.Video>, IEnumerable<VideoFragmentUrlModel>>(videoFragments,
+                opt =>
+                {
+                    opt.Items["YouTubeUrlFormat"] = VideoConfiguration.UrlConfig.YouTube;
+                    opt.Items["Origin"] = $"{Request.Scheme}://{Request.Host.ToString()}";
+                });
+
+            return Json(model.Select(x => x.Url));
+        }
+
+        private IEnumerable<Data.Entities.Video> FetchNewYouTubeVideoSeries()
         {
             // Retrieve the IDs of all the videos from the database
-            var videoFragmentIds = DbContext.Videos.Select(v => v.Id).ToList();
+            var videoFragmentIds = DbContext.Videos.Where(v => v.Exclude != true).Select(v => v.Id).ToList();
             var videoFragmentList = new List<Data.Entities.Video>();
             var totalSeconds = 0;
 
@@ -59,15 +89,7 @@ namespace MinuteOfHappiness.Frontend.Web.Controllers
                 totalSeconds += (videoFragment.EndSeconds - videoFragment.StartSeconds);
             }
 
-            // Map the entity to the model
-            var model = Mapper.Map<IEnumerable<Data.Entities.Video>, IEnumerable<VideoFragmentModel>>(videoFragmentList,
-                opt =>
-                {
-                    opt.Items["YouTubeUrlFormat"] = VideoUrlConfiguration.YouTube;
-                    opt.Items["Origin"] = $"{Request.Scheme}://{Request.Host.ToString()}";
-                });
-
-            return Json(model.Select(x => x.Url));
+            return videoFragmentList;
         }
     }
 }

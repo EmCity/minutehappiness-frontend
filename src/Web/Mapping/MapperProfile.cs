@@ -15,7 +15,18 @@ namespace MinuteOfHappiness.Frontend.Web.Mapping
 
             #region From entity to model
 
-            CreateMap<Video, VideoFragmentModel>()
+            #region VideoFragmentParamsModel
+
+            CreateMap<Video, VideoFragmentParamsModel>()
+                .ForMember(dest => dest.YouTubeId, opt => opt.MapFrom(src => src.YouTubeId))
+                .ForMember(dest => dest.StartSeconds, opt => opt.MapFrom(src => src.StartSeconds))
+                .ForMember(dest => dest.EndSeconds, opt => opt.MapFrom(src => src.EndSeconds));
+
+            #endregion
+
+            #region VideoFragmentUrlModel
+
+            CreateMap<Video, VideoFragmentUrlModel>()
                 .ForMember(dest => dest.Url, opt => opt.ResolveUsing((src, dest, mem, res) =>
                 {
                     var youTubeUrlFormat = res.Items["YouTubeUrlFormat"] as string;
@@ -26,6 +37,8 @@ namespace MinuteOfHappiness.Frontend.Web.Mapping
                         .Replace("{endSeconds}", src.EndSeconds.ToString())
                         .Replace("{origin}", origin ?? "_");
                 }));
+
+            #endregion
 
             #endregion
         }

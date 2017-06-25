@@ -2,10 +2,6 @@
 @using MinuteOfHappiness.Frontend.Web.Models
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
-@{
-    var assetVersion = 0;
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +12,13 @@
     <title>One Minute of Happiness</title>
 
     <environment names="Development">
-        <link href="~/lib/bootstrap/css/bootstrap.css?v=@assetVersion" rel="stylesheet" />
-        <link href="~/css/simple-sidebar.css?v=@assetVersion" rel="stylesheet" />
-        <link href="~/css/custom.css?v=@assetVersion" rel="stylesheet" />
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/css/simple-sidebar.css" rel="stylesheet" />
+        <link href="~/css/custom.css" rel="stylesheet" />
     </environment>
     <environment names="Staging,Production">
-        <link href="~/lib/bootstrap/css/bootstrap.min.css?v=@assetVersion" rel="stylesheet" />
-        <link href="~/css/video.min.css?v=@assetVersion" rel="stylesheet" />
+        <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/video.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
 </head>
 <body>
@@ -83,7 +79,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <!-- 16:9 aspect ratio -->
-                        <iframe id="youtube-video" class="embed-responsive-item" :src="videoUrl"></iframe>
+                        <div id="youtube-video"></div>
                     </div>
                 </div>
             </div>
@@ -92,25 +88,24 @@
 
     <script type="text/javascript">
         var urls = {
-            getNewVideo: '@Url.Action("FetchNewYouTubeVideoSeries", "Video")'
+            getNewVideoParams: '@Url.Action("GetNewYouTubeVideoParams", "Video")',
+            getNewVideoUrls: '@Url.Action("GetNewYouTubeVideoUrls", "Video")'
         }
     </script>
 
     <environment names="Development">
-        <script type="text/javascript" src="~/lib/jquery/jquery-3.2.1.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/vue/vue.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/vue-resource/vue-resource.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/youtube/iframe-api.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/js/main.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/jquery/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="~/lib/vue/vue.js"></script>
+        <script type="text/javascript" src="~/lib/vue-resource/vue-resource.js"></script>
+        <script type="text/javascript" src="~/js/main.js"></script>
     </environment>
     <environment names="Staging,Production">
-        <script type="text/javascript" src="~/lib/jquery/jquery-3.2.1.min.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/vue/vue.min.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/vue-resource/vue-resource.min.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/lib/youtube/iframe-api.js?v=@assetVersion"></script>
-        <script type="text/javascript" src="~/js/video.min.js?v=@assetVersion"></script>
+        <script type="text/javascript" src="~/lib/jquery/jquery-3.2.1.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/lib/vue/vue.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/lib/vue-resource/vue-resource.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/js/video.min.js" asp-append-version="true"></script>
     </environment>
 </body>
 </html>

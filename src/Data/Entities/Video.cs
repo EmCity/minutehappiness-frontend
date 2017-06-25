@@ -9,6 +9,7 @@ namespace MinuteOfHappiness.Frontend.Data.Entities
         public string YouTubeId { get; set; }
         public int StartSeconds { get; set; }
         public int EndSeconds { get; set; }
+        public bool? Exclude { get; set; }
 
         // Computed property to convert the start seconds to a TimeSpan
         public TimeSpan StartTime

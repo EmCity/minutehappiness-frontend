@@ -45,7 +45,7 @@ namespace MinuteOfHappiness.Frontend.Web
             services.AddOptions();
 
             // Cast the relevant configuration to a predefined options object
-            services.Configure<VideoUrlConfiguration>(Configuration.GetSection("VideoUrlFormat"));
+            services.Configure<VideoConfiguration>(Configuration.GetSection("VideoConfig"));
 
             // Add customer services
             services.AddScoped<ApplicationDbContext>(factory => 

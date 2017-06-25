@@ -18,12 +18,13 @@ namespace MinuteOfHappiness.Frontend.Data.Context
             #region Video configuration
 
             var videoConfig = modelBuilder.Entity<Video>();
-            videoConfig.ToTable("VideoFragments");
+            videoConfig.ToTable("ModelFragments");
             videoConfig.HasKey(model => model.Id);
             videoConfig.Property(model => model.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             videoConfig.Property(model => model.YouTubeId).IsRequired().HasMaxLength(500);
             videoConfig.Property(model => model.StartSeconds).IsRequired();
             videoConfig.Property(model => model.EndSeconds).IsRequired();
+            videoConfig.Property(model => model.Exclude).IsOptional();
             videoConfig.Ignore(model => model.StartTime);
             videoConfig.Ignore(model => model.EndTime);
             videoConfig.HasMany(model => model.Groups).WithMany(model => model.Videos).Map(conf =>

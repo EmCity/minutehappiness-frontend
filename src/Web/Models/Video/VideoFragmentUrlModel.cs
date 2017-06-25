@@ -1,6 +1,6 @@
 ﻿namespace MinuteOfHappiness.Frontend.Web.Models
 {
-    public class VideoFragmentModel
+    public class VideoFragmentUrlModel
     {
         public string Url { get; set; }
     }
