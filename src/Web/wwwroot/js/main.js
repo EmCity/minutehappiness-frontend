@@ -10,6 +10,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 function onYouTubeIframeAPIReady() {
 
     var youtubePlayer;
+    var youtubeMusic;
 
     // Vue
 
@@ -19,7 +20,8 @@ function onYouTubeIframeAPIReady() {
             videoCollection: [],
             videoIndex: -1,
             youTubeParams: null,
-            playing: true
+            playing: true,
+            music: true
         },
         computed: {
             video: function () {
@@ -28,7 +30,7 @@ function onYouTubeIframeAPIReady() {
             }
         },
         mounted: function () {
-            this.startVideoSequence();
+            this.initYouTubeMusic(this.startVideoSequence);
         },
         methods: {
             fetchVideoParams: function (callback) {
@@ -78,6 +80,32 @@ function onYouTubeIframeAPIReady() {
                     }
                 });
             },
+            initYouTubeMusic: function (callback) {
+                youtubeMusic = new YT.Player('youtube-music', {
+                    videoId: '-96SMUqYA1k',
+                    playersVars: {
+                        controls: 1,
+                        disablekb: 1,
+                        hl: 'en',
+                        rel: 0,
+                        showinfo: 0,
+                        loop: 1,
+                        playlist: '-96SMUqYA1k'
+                    },
+                    events: {
+                        onReady: function (event) {
+                            callback();
+                        },
+                        onStateChange: function (event) {
+                            switch (event.data) {
+                                case YT.PlayerState.ENDED:
+                                    event.target.playVideo();
+                                    break;
+                            }
+                        }
+                    }
+                });
+            },
             playNextVideo: function (youTubePlayer) {
                 if (this.videoIndex < this.videoCollection.length - 1) {
                     // Increase the video index by 1 when we're not at the end of the collection yet
@@ -98,13 +126,24 @@ function onYouTubeIframeAPIReady() {
                 console.log('Starting');
                 this.videoIndex = -1;
                 this.playing = true;
+                youtubeMusic.playVideo();
                 this.fetchVideoParams(this.initYouTubePlayer);
             },
             endVideoSequence: function () {
                 console.log('Ended');
                 this.playing = false;
+                youtubeMusic.stopVideo();
                 $('#youtube-video').remove();
                 $('#youtube-video-container').append('<div id="youtube-video"></div>');
+            },
+            toggleYouTubeMusic: function () {
+                if (this.music === true) {
+                    youtubeMusic.pauseVideo();
+                } else {
+                    youtubeMusic.playVideo();
+                }
+
+                this.music = !this.music;
             }
         }
     });

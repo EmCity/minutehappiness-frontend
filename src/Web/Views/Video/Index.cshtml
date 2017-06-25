@@ -47,15 +47,20 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
-                        <span href="#">Your music</span>
+                        <span href="#">Music</span>
                     </li>
-                    <li class="clickable">
+                    <!--<li class="clickable">
                         <input id="relaxed" type="radio" name="music" value="relaxed" checked>
                         <label for="relaxed">Relaxed</label>
                     </li>
                     <li class="clickable">
                         <input id="happy" type="radio" name="music" value="happy">
                         <label for="happy">Happy</label>
+                    </li>-->
+                    <li>
+                        <button class="btn btn-info" @@click="toggleYouTubeMusic">
+                            {{ music ? 'Mute music' : 'Play music' }}
+                        </button>
                     </li>
                     <li>
                         <a class="btn btn-success help-button" href="https://www.deutsche-depressionshilfe.de/unterstuetzen-sie-uns/spenden" target="_blank">
@@ -64,25 +69,30 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="embed-responsive embed-responsive-16by9 negativ-margin" id="page-content-wrapper" v-show="playing">
-                <div class="container-fluid">
-                    <div class="row" id="youtube-video-container">
-                        <!-- 16:9 aspect ratio -->
-                        <div id="youtube-video"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="page-content-wrapper" style="margin-top: 75px;" v-show="!playing">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xs-12" style="text-align: right;">
-                            <button id="replay-button" type="button" class="btn btn-lg btn-danger" @@click="startVideoSequence">
-                                Replay
-                            </button>
+            
+            <div id="page-content-wrapper">
+                <div class="embed-responsive embed-responsive-16by9 negativ-margin" v-show="playing">
+                    <div class="container-fluid">
+                        <div class="row" id="youtube-video-container">
+                            <!-- 16:9 aspect ratio -->
+                            <div id="youtube-video"></div>
                         </div>
                     </div>
-                </div>                
+                </div>
+                <div style="display: none;">
+                    <div id="youtube-music"></div>
+                </div>
+                <div style="margin-top: 75px;" v-show="!playing">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12" style="text-align: right;">
+                                <button id="replay-button" type="button" class="btn btn-lg btn-danger" @@click="startVideoSequence">
+                                    Replay
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
