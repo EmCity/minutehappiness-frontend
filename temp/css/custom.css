@@ -17,5 +17,10 @@ body {
   float: right!important;
 }
 .negativ-margin{
-    margin-top: -0px;
+    margin-top: 50px;
+}
+
+.help-button{
+    margin-left: 25px;
+    margin-top: 25px;
 }

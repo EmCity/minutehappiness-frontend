@@ -40,34 +40,19 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Start Bootstrap
-                    </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
+                <li class="sidebar-brand"><a href="#">Your music</a></li>
+                <form acion="">
+                    <li><input id="relaxed" type="radio" name="music" value="relaxed" checked>
+                        <label for="relaxed">Relaxed</label>
+                    </li>
+                    <li><input id="happy" type="radio" name="music" value="happy">
+                        <label for="happy">Happy</label>
+                    </li>
+                </form>
+                <button type="button" class="btn btn-default help-button" onclick=" window.open('https://www.deutsche-depressionshilfe.de/unterstuetzen-sie-uns/spenden','_blank')">Help Others</button>
             </ul>
         </div>
+        
 
         <div class="embed-responsive embed-responsive-16by9 negativ-margin" id="page-content-wrapper">
             <div class="container-fluid">
@@ -86,6 +71,8 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
+
+    <iframe src="https://www.youtube.com/embed/9Va88Kt0NN0?autoplay=1" hidden></iframe>
 
     <!-- Menu Toggle Script -->
     <script>
