@@ -126,6 +126,7 @@ function onYouTubeIframeAPIReady() {
                 console.log('Starting');
                 this.videoIndex = -1;
                 this.playing = true;
+                this.music = true;
                 youtubeMusic.playVideo();
                 this.fetchVideoParams(this.initYouTubePlayer);
             },
