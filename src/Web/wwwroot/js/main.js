@@ -27,8 +27,7 @@ function onYouTubeIframeAPIReady() {
             }
         },
         mounted: function () {
-            // When loaded, fetch the video urls from the server and start playing the video
-            this.fetchVideoParams(this.initYouTubePlayer);
+            this.startVideoSequence();
         },
         methods: {
             fetchVideoParams: function (callback) {
@@ -92,43 +91,46 @@ function onYouTubeIframeAPIReady() {
                     this.endVideoSequence();
                 }
             },
+            startVideoSequence: function () {
+                this.fetchVideoParams(this.initYouTubePlayer);
+            },
             endVideoSequence: function () {
                 console.log('Ended');
             }
         }
     });
+
+    (function ($) {
+
+        // jQuery
+
+        $(function () {
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+                if ($('#wrapper').hasClass("toggled")) {
+                    var eleToggle = $('.negativ-margin');
+                    eleToggle.css('margin-top', 0);
+                }
+                else {
+                    $(window).trigger('resize');
+                }
+            });
+
+            $(window).on('load resize', function () {
+                if ($(document).height() > $(window).height()) {
+                    var ele = $('.negativ-margin');
+                    var newSize = $(window).height() - $(document).height();
+                    ele.css('margin-top', newSize + 'px');
+                }
+                else {
+                    var eleElse = $('.negativ-margin');
+                    eleElse.css('margin-top', 0);
+                }
+            });
+
+            $(window).trigger('load');
+        });
+
+    })(jQuery);
 }
-
-(function ($) {
-
-    // jQuery
-
-    $(function () {
-        $("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-            if ($('#wrapper').hasClass("toggled")) {
-                var toggleEle = $('.negativ-margin');
-                toggleEle.css('margin-top', 0);
-            }
-            else {
-                $(window).trigger('resize');
-            }
-        });
-
-        $(window).on('load resize', function () {
-            if ($(document).height() > $(window).height()) {
-                var ele = $('.negativ-margin');
-                var newSize = $(window).height() - $(document).height();
-                ele.css('margin-top', newSize + 'px');
-            }
-            else {
-                var elseEle = $('.negativ-margin');
-                elseEle.css('margin-top', 0);
-            }
-        });
-
-        $(window).trigger('load');
-    });
-
-})(jQuery);

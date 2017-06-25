@@ -1,5 +1,5 @@
 body {
-   background:black !important;
+    background: black !important;
 }
 
 .navbar-collapse.collapse {
@@ -19,5 +19,10 @@ body {
 }
 
 .negativ-margin {
-    margin-top: -0px;
+    margin-top: 50px;
+}
+
+.help-button {
+    margin-left: -15px;
+    margin-top: 25px;
 }

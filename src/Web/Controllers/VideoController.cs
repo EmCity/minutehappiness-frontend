@@ -85,6 +85,10 @@ namespace MinuteOfHappiness.Frontend.Web.Controllers
                 var videoFragment = DbContext.Videos.Single(v => v.Id == videoFragmentId);
                 videoFragmentList.Add(videoFragment);
 
+                var startDelay = videoFragment.EndSeconds - videoFragment.StartSeconds - 6;
+                if (startDelay > 0)
+                    videoFragment.StartSeconds += startDelay;
+                
                 // Add the total duration of the seconds to the variable
                 totalSeconds += (videoFragment.EndSeconds - videoFragment.StartSeconds);
             }
