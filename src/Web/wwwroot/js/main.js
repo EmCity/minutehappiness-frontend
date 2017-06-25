@@ -18,7 +18,8 @@ function onYouTubeIframeAPIReady() {
         data: {
             videoCollection: [],
             videoIndex: -1,
-            youTubeParams: null
+            youTubeParams: null,
+            playing: true
         },
         computed: {
             video: function () {
@@ -53,6 +54,8 @@ function onYouTubeIframeAPIReady() {
                         onReady: function (event) {
                             // Add the Bootstrap class
                             $('#youtube-video').addClass('embed-responsive-item');
+
+                            $(window).trigger('resize');
 
                             event.target.mute();
                             _this.playNextVideo(event.target);
@@ -92,10 +95,16 @@ function onYouTubeIframeAPIReady() {
                 }
             },
             startVideoSequence: function () {
+                console.log('Starting');
+                this.videoIndex = -1;
+                this.playing = true;
                 this.fetchVideoParams(this.initYouTubePlayer);
             },
             endVideoSequence: function () {
                 console.log('Ended');
+                this.playing = false;
+                $('#youtube-video').remove();
+                $('#youtube-video-container').append('<div id="youtube-video"></div>');
             }
         }
     });

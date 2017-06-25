@@ -65,13 +65,24 @@
                 </ul>
             </div>
 
-            <div class="embed-responsive embed-responsive-16by9 negativ-margin" id="page-content-wrapper">
+            <div class="embed-responsive embed-responsive-16by9 negativ-margin" id="page-content-wrapper" v-show="playing">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row" id="youtube-video-container">
                         <!-- 16:9 aspect ratio -->
                         <div id="youtube-video"></div>
                     </div>
                 </div>
+            </div>
+            <div id="page-content-wrapper" style="margin-top: 75px;" v-show="!playing">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12" style="text-align: right;">
+                            <button id="replay-button" type="button" class="btn btn-lg btn-danger" @@click="startVideoSequence">
+                                Replay
+                            </button>
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
     </div>
